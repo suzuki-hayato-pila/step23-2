@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokemon Database</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Pokemon Database</h1>
+
+      <!-- 検索フォーム -->
+      <form action="#" class="search-container" id="js-form">
+        <input
+          type="text"
+          name="pokeName"
+          id="pokemonName"
+          placeholder="Pokemon Name"
+          class="search-input"
+        />
+        <button type="submit" class="search-button">Get Data</button>
+      </form>
+
+      <!-- フィルター入力とボタン -->
+      <div class="filter-container">
+        <input
+          type="number"
+          id="minHeight"
+          placeholder="Min Height (m)"
+          class="filter-input"
+        />
+        <input
+          type="number"
+          id="maxHeight"
+          placeholder="Max Height (m)"
+          class="filter-input"
+        />
+        <input
+          type="number"
+          id="minWeight"
+          placeholder="Min Weight (kg)"
+          class="filter-input"
+        />
+        <input
+          type="number"
+          id="maxWeight"
+          placeholder="Max Weight (kg)"
+          class="filter-input"
+        />
+        <button id="filterData" class="filter-button">Filter</button>
+      </div>
+
+      <!-- シングルポケモン情報表示領域 -->
+      <div id="js-result" class="result">
+        <div class="pokemon-info" style="display: none">
+          <img src="" alt="" class="pokemon-image" id="pokemonImage" />
+          <h2 id="pokemonNameDisplay"></h2>
+          <p id="pokemonHeight"></p>
+          <p id="pokemonWeight"></p>
+          <p id="pokemonTypes"></p>
+        </div>
+      </div>
+
+      <!-- ポケモン名リファレンスリンク -->
+      <p class="help-link">
+        <a href="https://pokemon.gameinfo.io/en/pokemon" target="_blank">
+          You can find Pokemon names in English here
+        </a>
+      </p>
+    </div>
+
+    <script type="module" src="./scripts/main.js"></script>
+  </body>
+</html>

@@ -18,6 +18,9 @@ const pokemonNameDisplay = document.querySelector("#pokemonNameDisplay");
 const pokemonHeight = document.querySelector("#pokemonHeight");
 const pokemonWeight = document.querySelector("#pokemonWeight");
 const pokemonTypes = document.querySelector("#pokemonTypes");
+const searchInput = document.querySelector("#pokemonName");
+const searchButton = document.querySelector("#getData");
+const filterButton = document.querySelector("#filterData");
 
 // ポケモンデータを表示
 async function displayPokemonData(pokemonName) {
@@ -31,6 +34,12 @@ async function displayPokemonData(pokemonName) {
 
 // シングルポケモン情報の更新
 function displaySinglePokemon(pokemon) {
+  // Remove any existing error message
+  const errorMessage = resultDiv.querySelector(".error-message");
+  if (errorMessage) {
+    errorMessage.remove();
+  }
+
   pokemonImage.src = pokemon.image;
   pokemonImage.alt = pokemon.name;
   pokemonNameDisplay.textContent =
@@ -45,22 +54,36 @@ function displaySinglePokemon(pokemon) {
 
 // エラーメッセージの表示
 function showError(message) {
-  resultDiv.innerHTML = `<p class="error-message">${message}</p>`;
+  // Reset the pokemon info div to its initial hidden state
+  if (pokemonInfoDiv) {
+    pokemonInfoDiv.style.display = "none";
+  }
+
+  // Show error message
+  const errorDiv = document.createElement("p");
+  errorDiv.className = "error-message";
+  errorDiv.textContent = message;
+
+  // Clear previous error messages
+  const previousError = resultDiv.querySelector(".error-message");
+  if (previousError) {
+    previousError.remove();
+  }
+
+  resultDiv.appendChild(errorDiv);
   resultDiv.classList.add("active");
 }
 
 // 検索フォームのイベントリスナー
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const pokemonName = document.querySelector("#pokemonName").value.trim();
+  const pokemonName = searchInput.value.trim();
   if (pokemonName) {
     await displayPokemonData(pokemonName);
   }
 });
 
-const filterButton = document.querySelector("#filterData");
-
-//　フィルター機能
+// フィルター機能
 filterButton.addEventListener("click", () => {
   const minHeight = parseFloat(document.querySelector("#minHeight").value) || 0;
   const maxHeight =

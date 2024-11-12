@@ -92,6 +92,12 @@ function displayPokemonList(pokemonList) {
     return;
   }
 
+  // Clear any existing error messages
+  const errorMessage = resultDiv.querySelector(".error-message");
+  if (errorMessage) {
+    errorMessage.remove();
+  }
+
   // 基本構造を保持しつつ、リストを表示
   const pokemonInfoDiv = resultDiv.querySelector(".pokemon-info");
   if (pokemonInfoDiv) {

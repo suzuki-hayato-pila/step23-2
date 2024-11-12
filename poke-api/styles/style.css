@@ -67,6 +67,11 @@ h1 {
   padding: 1rem;
   background-color: #333;
   border-radius: 8px;
+  display: none; /* Hide by default */
+}
+
+.result.active {
+  display: block; /* Show when active class is added */
 }
 
 .pokemon-info {
@@ -84,10 +89,10 @@ h1 {
 }
 
 /* エラーメッセージのスタイル */
-#error-message {
+.error-message {
   color: #ff4a4a;
   font-weight: bold;
-  display: none;
+  margin-top: 1rem;
 }
 
 /* ポケモンリストのスタイル */
@@ -128,13 +133,12 @@ h1 {
 }
 
 /* リンクのスタイル */
-.help-link {
+.help-link a {
   color: #4a9eff;
   text-decoration: none;
-  margin-top: 1rem;
 }
 
-.help-link:hover {
+.help-link a:hover {
   text-decoration: underline;
 }
 
@@ -172,6 +176,22 @@ h1 {
 
 .filter-button:hover {
   background-color: #666;
+}
+
+/* 小画面でのフィルター入力の配置 */
+@media (max-width: 768px) {
+  .filter-container {
+    flex-wrap: wrap;
+  }
+
+  .filter-input {
+    flex: 1 1 calc(50% - 0.5rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .filter-button {
+    flex: 1 1 100%;
+  }
 }
 
 /* :root {
